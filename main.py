@@ -6,15 +6,16 @@ from PyQt5.QtWidgets import QApplication, QWidget
 from PyQt5.QtGui import QPainter, QBrush, QPen
 from PyQt5.QtCore import Qt
 from PyQt5 import uic
+from UI import Ui_Form
 # from mainUi import Ui_Form
 
 
-class Example(QWidget):
+class Example(QWidget, Ui_Form):
     def __init__(self):
         super().__init__()
         self.flag = False
         self.qp = None
-        uic.loadUi('UI.ui', self)
+        self.setupUi(self)
         self.initUI()
 
     def initUI(self):
@@ -28,7 +29,7 @@ class Example(QWidget):
 
     def drawC(self):
         pen = QPen()
-        r, g, b = 255, 237, 0
+        r, g, b = random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)
         pen.setColor(QtGui.QColor().fromRgb(r, g, b))
         pen.setWidth(10)
         self.qp.setPen(pen)
